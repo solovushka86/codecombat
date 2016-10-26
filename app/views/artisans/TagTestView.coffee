@@ -36,7 +36,7 @@ module.exports = class ThangTasksView extends RootView
       @tagView.render()
       @debouncedUpdateTags()
 
-    @editor.setValue(localStorage.code)
+    @editor.setValue(localStorage.code||'')
     @editor.focus()
     @updateTags()
 
