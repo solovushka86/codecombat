@@ -23,8 +23,8 @@ concepts =
     algorithm_search_graph: false
     algorithm_sort: false
     algorithm_sum: false
-    arguments: false
-    arithmetic: false
+    arguments: 'CallExpression.arguments>*'
+    arithmetic: (ast) -> _.some ast.find('BinaryExpression'), (n) -> n.operator in ['+','-','*','/'] and n.right?.value isnt 1
     array_2d: false
     array_index: false
     array_iterating: false
@@ -67,7 +67,7 @@ concepts =
     if_else_statements: 'if.alternate>*'
     if_statements: 'if'
     if_statements_nested: 'if if'
-    indexing: 'MemberExpression[computed=true]'
+    indexing: (ast) -> _.some ast.find('MemberExpression'), (e) => e.computed
     input_handling_flags: false
     input_handling_keyboard: false
     input_handling_mouse: false
@@ -82,9 +82,9 @@ concepts =
     length: 'MemberExpression.property>Identifier[name="length"]'
     math_geometry: false
     math_operations: false
-    math_trigonometry: 'CallExpression>MemberExpression:matches(.object>Identifier[name=Math]):matches(.property>Identifier[name=sin],>Identifier[name=cos],>Identifier[name=tan])'
+    math_trigonometry: 'CallExpression>MemberExpression:matches(.object>Identifier[name=Math]).property:matches(>Identifier[name=sin],>Identifier[name=cos],>Identifier[name=tan])'
     object_literals: 'ObjectExpression'
-    parameters: 'CallExpression.arguments>*'
+    parameters: 'Function.params>*'
     property_access: ':not(CallExpression,AssignmentExpression)>MemberExpression'
     property_assignment: 'AssignmentExpression.left>MemberExpression'
     queues: false
@@ -92,11 +92,11 @@ concepts =
     recursion: false
     return_statements: 'ReturnStatement'
     stacks: false
-    strings: false
+    strings: (ast) -> _.some ast.find("Literal"), (e) -> typeof e.value is 'string'
     strings_concatenation: false
-    strings_substrings: 'CallExpression>MemberExpression>Identifier[name="substr"]'
+    strings_substrings: 'CallExpression>MemberExpression>Identifier[name="substr"],CallExpression>MemberExpression>Identifier[name="substring"]'
     trees: false
-    variables: false
+    variables: 'VariableDeclaration'
     vectors: 'Identifier[name=Vector]'
     while_condition_loops: 'WhileStatement.test>*:not(Literal)'
     while_loops_simple: 'WhileStatement.test:matches(Literal)'
@@ -104,11 +104,10 @@ concepts =
     xy_coordinates: 'MemberExpression>Identifier[name="y"]'
 
 module.exports = TagSolution = (solution) ->
-  code = solution.code
+  code = solution.source
   engine = new esper.Engine()
   engine.load(code)
   ast = engine.evaluator.ast
-  console.log(ast)
   result = []
   for key of concepts
     tkn = concepts[key]

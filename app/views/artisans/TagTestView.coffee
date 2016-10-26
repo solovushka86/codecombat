@@ -2,6 +2,7 @@ RootView = require 'views/core/RootView'
 CocoView = require 'views/core/CocoView'
 template = require 'templates/artisans/tag-test-view'
 tagger = require 'lib/SolutionConceptTagger'
+conceptList =require 'schemas/concepts'
 
 ThangType = require 'models/ThangType'
 
@@ -45,7 +46,7 @@ module.exports = class ThangTasksView extends RootView
     @tagView.error = undefined
     localStorage.code = code
     try
-      @tagView.tags = tagger(code: code)
+      @tagView.tags = _.map tagger(source: code), (t) -> _.find(conceptList, (e) => e.concept is t)?.name
     catch e
       @tagView.error = e.stack
     
