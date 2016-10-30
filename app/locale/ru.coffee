@@ -1859,13 +1859,13 @@ module.exports = nativeDescription: "русский", englishDescription: "Russi
     status_unsubscribed: "Получите доступ к новым уровням, героям, предметам и бонусным самоцветам с подпиской CodeCombat!"
 #    not_yet_verified: "Not yet verified."
 #    resend_email: "Resend email"
-#    email_sent: "Email sent! Check your inbox."
-#    verifying_email: "Verifying your email address..."
-#    successfully_verified: "You've successfully verified your email address!"
+    email_sent: "Email выслан! Проверьте входящие сообщения."
+    verifying_email: "Подтвердите адрес электронной почты..."
+    successfully_verified: "Вы только что успешно подтвердили адрес электронной почты!"
 #    back_to_student_page: "Go back to student things"
 #    back_to_teacher_page: "Go to My Classes"
 #    back_to_game: "Go play some more levels!"
-#    verify_error: "Something went wrong when verifying your email :("
+    verify_error: "Что-то пошло не так при подтверждении электронной почты :("
 
   account_invoices:
     amount: "Количество в долларах США"
@@ -1902,7 +1902,7 @@ module.exports = nativeDescription: "русский", englishDescription: "Russi
 #  coppa_deny:
 #    text1: "Can’t wait to learn programming?"
 #    text2: "Your parents will need to create an account for you to use! Email team@codecombat.com if you have any questions."
-#    close: "Close Window"
+    close: "Закрыть Окно (Windows)"
 
   loading_error:
     could_not_load: "Ошибка загрузки с сервера"
@@ -1914,7 +1914,7 @@ module.exports = nativeDescription: "русский", englishDescription: "Russi
     forbidden: "У вас нет прав доступа."
 #    forbidden_desc: "Oh no, there’s nothing we can show you here! Make sure you’re logged into the correct account, or visit one of the links below to get back to programming!"
     not_found: "Не найдено."
-#    not_found_desc: "Hm, there’s nothing here. Visit one of the following links to get back to programming!"
+    not_found_desc: "Хммм, тут ничего нет, перейдите по одной из ссылко и оставьте отзыв нашим программистам."
     not_allowed: "Метод не поддерживается."
     timeout: "Тайм-аут сервера." # {change}
     conflict: "Конфликт ресурсов."
@@ -1922,7 +1922,7 @@ module.exports = nativeDescription: "русский", englishDescription: "Russi
     server_error: "Ошибка сервера."
     unknown: "Неизвестная ошибка." # {change}
     error: "ОШИБКА"
-#    general_desc: "Something went wrong, and it’s probably our fault. Try waiting a bit and then refreshing the page, or visit one of the following links to get back to programming!"
+    general_desc: "Что-то пошло не так и это возможно наша вина. Подождите немного и после этого обновите страницу или перейдите по одной из ссылок и оставте отзыв нашим программистам."
 
   resources:
     level: "Уровень"
